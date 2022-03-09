@@ -3,11 +3,14 @@ import { APIGatewayProxyHandler } from 'aws-lambda';
 import { createServer, proxy } from 'aws-serverless-express';
 import { eventContext } from 'aws-serverless-express/middleware';
 import { NestFactory } from '@nestjs/core';
+import { ValidationPipe } from '@nestjs/common';
 import { ExpressAdapter } from '@nestjs/platform-express';
 
-import { AppModule } from './app.module';
-
 import express = require('express');
+
+import { AppModule } from './app.module';
+import { GlobalInterceptor } from './interceptors/global.interceptor';
+import { GlobalExceptionFilter } from './exceptions/global-exception.filter';
 
 const binaryMimeTypes: string[] = [];
 
@@ -16,11 +19,18 @@ let cachedServer: Server;
 async function bootstrapServer(): Promise<Server> {
   if (!cachedServer) {
     const expressApp = express();
-    const nestApp = await NestFactory.create(
-      AppModule,
-      new ExpressAdapter(expressApp),
-    );
+    const nestApp = await NestFactory.create(AppModule, new ExpressAdapter(expressApp));
     nestApp.use(eventContext());
+
+    nestApp.useGlobalPipes(
+      new ValidationPipe({
+        forbidNonWhitelisted: true,
+        transform: true,
+      }),
+    );
+    nestApp.useGlobalFilters(new GlobalExceptionFilter());
+    nestApp.useGlobalInterceptors(new GlobalInterceptor());
+
     await nestApp.init();
     cachedServer = createServer(expressApp, undefined, binaryMimeTypes);
   }

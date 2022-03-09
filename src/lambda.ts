@@ -12,9 +12,8 @@ import { AppModule } from './app.module';
 import { GlobalInterceptor } from './interceptors/global.interceptor';
 import { GlobalExceptionFilter } from './exceptions/global-exception.filter';
 
-const binaryMimeTypes: string[] = [];
-
 let cachedServer: Server;
+const binaryMimeTypes: string[] = [];
 
 async function bootstrapServer(): Promise<Server> {
   if (!cachedServer) {

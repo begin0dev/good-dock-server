@@ -10,6 +10,11 @@ export class GlobalExceptionFilter implements ExceptionFilter {
     const res = ctx.getResponse<Response>();
     const status = exception.getStatus?.() ?? HttpStatus.INTERNAL_SERVER_ERROR;
 
-    res.status(status).json({ status: JsendStatus.ERROR, message: exception.message });
+    let { message } = exception;
+    const errRes = exception.getResponse?.();
+    if (status === 400 && typeof errRes === 'object') {
+      message = `${message} - ${errRes['message'][0]}`;
+    }
+    res.status(status).json({ status: JsendStatus.ERROR, message: message });
   }
 }

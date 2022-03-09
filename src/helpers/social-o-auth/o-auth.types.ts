@@ -10,7 +10,7 @@ export type TOAuthProvider = typeof oAuthProviders[keyof typeof oAuthProviders];
 export interface IOptions {
   clientId: string;
   clientSecret: string;
-  callbackUrl: string;
+  callbackUrl?: string;
   scope?: string[];
   profileFields?: string[];
   grantType?: string;
@@ -43,4 +43,12 @@ export interface IAccessTokenParams {
 export interface IProfile {
   provider: TOAuthProvider;
   accessToken: string;
+}
+
+export interface IKakaoAccount {
+  id: number;
+  properties: {
+    nickname: string;
+    profile_image: string;
+  };
 }

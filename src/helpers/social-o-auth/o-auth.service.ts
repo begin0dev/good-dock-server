@@ -11,8 +11,8 @@ import {
   IOptions,
   IProfile,
   IOAuthOptions,
-} from '~app/helpers/o-auth-module/o-auth.types';
-import { OAUTH_OPTION_PROVIDER } from '~app/helpers/o-auth-module/o-auth.module';
+} from './o-auth.types';
+import { OAUTH_OPTION_PROVIDER } from './o-auth.module';
 
 const SOCIAL_BASE = {
   [oAuthProviders.FACEBOOK]: {
@@ -57,6 +57,7 @@ export class OAuthService {
 
   getCallbackUrl(provider: TOAuthProvider, serverUrl: string, accessToken: string) {
     const { callbackUrl } = this.oAuthOptions[provider];
+    if (!callbackUrl) throw new Error(`${provider} callbackUrl is not defined`);
     return `${serverUrl}${callbackUrl}?${qs.stringify({ access_token: accessToken })}`;
   }
 

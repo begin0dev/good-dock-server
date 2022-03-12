@@ -21,10 +21,8 @@ functions:
           path: /{any+}
 
 package:
-  exclude:
+  patterns:
     - '!node_modules/.prisma/client/libquery_engine-*'
     - 'node_modules/.prisma/client/libquery_engine-rhel-*'
-
-custom:
-  optimize:
-    external: ['@prisma/client', '.prisma/client']
+    - '!node_modules/prisma/libquery_engine-*'
+    - '!node_modules/@prisma/engines/**'

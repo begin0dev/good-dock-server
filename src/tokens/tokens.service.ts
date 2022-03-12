@@ -18,7 +18,7 @@ export class TokensService {
   }
 
   generateAccessToken(payload: IJwtPayload, expiresIn?: string): string {
-    return jwt.sign(payload, this.JWT_SECRET, { issuer: 'good-dock', expiresIn: expiresIn || '1h' });
+    return jwt.sign(payload, this.JWT_SECRET, { issuer: 'good-dock', expiresIn: expiresIn || '1d' });
   }
 
   decodeAccessToken(token: string) {

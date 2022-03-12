@@ -1,16 +1,16 @@
 service: good-duck-server
 
 plugins:
-  - serverless-dotenv-plugin
   - serverless-plugin-typescript
   - serverless-plugin-optimize
+  - serverless-prune-plugin
   - serverless-offline
 
 provider:
   name: aws
+  region: ap-northeast-2
   runtime: nodejs14.x
   stage: dev
-  region: ap-northeast-2
 
 functions:
   main:
@@ -19,3 +19,12 @@ functions:
       - http:
           method: any
           path: /{any+}
+
+package:
+  exclude:
+    - '!node_modules/.prisma/client/libquery_engine-*'
+    - 'node_modules/.prisma/client/libquery_engine-rhel-*'
+
+custom:
+  optimize:
+    external: ['@prisma/client', '.prisma/client']

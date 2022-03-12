@@ -37,4 +37,10 @@ export class UsersService {
       },
     });
   }
+
+  findByRefreshToken(refreshToken: string): Promise<User | null> {
+    return this.prisma.user.findFirst({
+      where: { refreshToken },
+    });
+  }
 }

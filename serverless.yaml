@@ -24,3 +24,7 @@ package:
   exclude:
     - '!node_modules/.prisma/client/libquery_engine-*'
     - 'node_modules/.prisma/client/libquery_engine-rhel-*'
+
+custom:
+  optimize:
+    external: ['@prisma/client', '.prisma/client']

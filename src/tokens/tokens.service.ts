@@ -3,10 +3,10 @@ import * as jwt from 'jsonwebtoken';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
-import { CurrentUser } from '../serializers/user.serializer';
+import { ICurrentUser } from '../serializers/user.serializer';
 
 export interface IJwtPayload {
-  user: CurrentUser;
+  user: ICurrentUser;
 }
 
 @Injectable()

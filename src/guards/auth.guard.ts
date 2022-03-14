@@ -1,4 +1,11 @@
-import { CanActivate, ExecutionContext, Injectable, mixin, Type } from '@nestjs/common';
+import {
+  CanActivate,
+  ExecutionContext,
+  Injectable,
+  mixin,
+  Type,
+  UnauthorizedException,
+} from '@nestjs/common';
 
 export const authTarget = {
   VISITOR: 'visitor',
@@ -13,7 +20,7 @@ export function AuthGuard(target: TAuthTarget): Type<CanActivate> {
     canActivate(context: ExecutionContext): boolean {
       const { user } = context.switchToHttp().getRequest();
       if (target === authTarget.VISITOR && user) return false;
-      if (target === authTarget.USER && !user) return false;
+      if (target === authTarget.USER && !user) throw new UnauthorizedException();
       return true;
     }
   }

@@ -1,6 +1,11 @@
-import { Expose } from 'class-transformer';
+import { Expose, Transform } from 'class-transformer';
 
 export class BaseSerializer {
   @Expose()
-  id: string;
+  @Transform((value) => {
+    const { _id } = value.obj;
+    if (typeof _id === 'string') return _id;
+    return _id?.toString();
+  })
+  _id: string;
 }

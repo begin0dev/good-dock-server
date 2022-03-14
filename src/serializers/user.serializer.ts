@@ -6,7 +6,7 @@ export class UserSerializer extends BaseSerializer {
   @Expose() displayName: string;
 }
 
-export interface CurrentUser {
-  id: string;
+export interface ICurrentUser {
+  _id: string;
   displayName: string;
 }

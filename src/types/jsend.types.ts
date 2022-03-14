@@ -5,6 +5,6 @@ export const JsendStatus = {
 } as const;
 
 export interface JsendReturnType<P, M = undefined> {
-  payload: P;
+  payload?: P;
   meta?: M;
 }

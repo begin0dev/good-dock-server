@@ -3,6 +3,8 @@ import { Optional } from '@nestjs/common';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { IsString, Length } from 'class-validator';
 
+import mongooseDelete = require('mongoose-delete');
+
 @Schema({ timestamps: true })
 export class User {
   @IsString()
@@ -28,3 +30,4 @@ export type UserDocument = User & Document;
 export const UserSchema = SchemaFactory.createForClass(User);
 
 UserSchema.index({ provider: 1, providerId: 1 }, { unique: true });
+UserSchema.plugin(mongooseDelete, { deletedAt: true });

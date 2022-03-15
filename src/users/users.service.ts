@@ -6,6 +6,7 @@ import { UserDocument, User } from '../schemas/user.schema';
 import { IKakaoAccount, TOAuthProvider } from '../helpers/social-o-auth/o-auth.types';
 import { OAuthService } from '../helpers/social-o-auth/o-auth.service';
 import { TokensService } from '../tokens/tokens.service';
+import { ICurrentUser } from '../serializers/user.serializer';
 
 @Injectable()
 export class UsersService {
@@ -34,5 +35,9 @@ export class UsersService {
 
   findByRefreshToken(refreshToken: string) {
     return this.userModel.findOne({ refreshToken });
+  }
+
+  logout(user: ICurrentUser) {
+    return this.userModel.updateOne({ _id: user._id }, { $unset: { refreshToken: -1 } });
   }
 }

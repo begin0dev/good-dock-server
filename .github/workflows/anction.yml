@@ -1,9 +1,6 @@
 name: Node.js DEPLOY
 
 on:
-  push:
-    branches:
-      - develop
   pull_request:
     types: [closed]
     branches:

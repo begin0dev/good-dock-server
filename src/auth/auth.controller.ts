@@ -1,4 +1,4 @@
-import { Controller, ForbiddenException, Get, Req, UseGuards } from '@nestjs/common';
+import { Controller, Delete, ForbiddenException, Get, HttpCode, Req, UseGuards } from '@nestjs/common';
 import { Request } from 'express';
 
 import { ICurrentUser, UserSerializer } from '../serializers/user.serializer';
@@ -31,5 +31,13 @@ export class AuthController {
       user: modelSerializer(user, UserSerializer),
     });
     return { meta: { accessToken } };
+  }
+
+  @Delete()
+  @HttpCode(204)
+  @UseGuards(AuthGuard(authTarget.USER))
+  async logout(@CurrentUser() user: ICurrentUser) {
+    await this.usersService.logout(user);
+    return null;
   }
 }

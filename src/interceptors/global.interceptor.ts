@@ -14,7 +14,7 @@ import { JsendStatus } from '../types/jsend.types';
 export class GlobalInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     return next.handle().pipe(
-      map(({ meta, payload }) => ({ status: JsendStatus.SUCCESS, data: { payload, meta } })),
+      map((data) => ({ status: JsendStatus.SUCCESS, data: { payload: data?.payload, meta: data?.meta } })),
       timeout(5000),
       catchError((err) => {
         if (err instanceof TimeoutError) return throwError(() => new RequestTimeoutException());

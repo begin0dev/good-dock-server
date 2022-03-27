@@ -15,7 +15,7 @@ export class SubscribesController {
 
   @Post('run')
   run() {
-    this.subscribesService.run();
+    // this.subscribesService.run();
     return null;
   }
 }

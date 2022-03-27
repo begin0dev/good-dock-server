@@ -6,6 +6,7 @@ import { SocialsModule } from './socials/socials.module';
 import { AuthModule } from './auth/auth.module';
 import { TokensMiddleware } from './tokens/tokens.middleware';
 import { TokensModule } from './tokens/tokens.module';
+import { SubscribesModule } from './subscribes/subscribes.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { TokensModule } from './tokens/tokens.module';
     SocialsModule,
     AuthModule,
     TokensModule,
+    SubscribesModule,
   ],
 })
 export class AppModule {

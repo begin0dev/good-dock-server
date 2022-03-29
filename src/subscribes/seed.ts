@@ -15,13 +15,13 @@ export const run0325 = [
           'https://play-lh.googleusercontent.com/GweSpOJ7p8RZ0lzMDr7sU0x5EtvbsAubkVjLY-chdyV6exnSUfl99Am0g8X0w_a2Qo4=s180-rw',
       },
       {
-        ko: '유튜브',
-        en: 'youtube',
+        ko: '유튜브 프리미엄',
+        en: 'youtube premium',
         imageUrl:
           'https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc=s360-rw',
       },
       {
-        ko: '디지니플러스',
+        ko: '디지니 플러스',
         en: 'disney+',
         imageUrl:
           'https://play-lh.googleusercontent.com/xoGGYH2LgLibLDBoxMg-ZE16b-RNfITw_OgXBWRAPin2FZY4FGB9QKBYApR-0rSCkQ=s360-rw',
@@ -49,6 +49,12 @@ export const run0325 = [
         en: 'spotify',
         imageUrl:
           'https://play-lh.googleusercontent.com/UrY7BAZ-XfXGpfkeWg0zCCeo-7ras4DCoRalC_WXXWTK9q5b0Iw7B0YQMsVxZaNB7DM=w480-h960-rw',
+      },
+      {
+        ko: '지마켓 스마일클럽',
+        en: 'gmarket smile club',
+        imageUrl:
+          'https://play-lh.googleusercontent.com/_kOpK91Js2bz6aGKx48D0D3TdWZGDgBV8A7iP5_IkOPkoz8tkeaCnQ7WruQ3zVZl5rA=w480-h960-rw',
       },
     ],
   },

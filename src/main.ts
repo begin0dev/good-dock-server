@@ -7,7 +7,7 @@ import { GlobalInterceptor } from './interceptors/global.interceptor';
 import { GlobalExceptionFilter } from './exceptions/global-exception.filter';
 
 async function bootstrap() {
-  const { NODE_ENV, PORT = 3001 } = process.env;
+  const { PORT = 3001 } = process.env;
 
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
@@ -23,7 +23,7 @@ async function bootstrap() {
 
   // RUN server
   await app.listen(PORT);
-  console.log(`${NODE_ENV}: Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 }
 
 bootstrap();

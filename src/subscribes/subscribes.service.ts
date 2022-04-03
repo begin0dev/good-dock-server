@@ -26,14 +26,12 @@ export class SubscribesService {
     const koRegex = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
     const excludeKoRegex = /[ㄱ-ㅎ|ㅏ-ㅣ]/;
 
-    let lang: 'ko' | 'en' = 'en';
+    let lang: 'ko' | 'en' = 'ko';
     let query = this.subscribeModel.find();
     if (searchDto.keyword) {
       let { keyword } = searchDto;
-      if (searchDto.keyword.match(koRegex)) lang = 'ko';
-      if (lang === 'ko') {
-        keyword = keyword.replace(excludeKoRegex, '');
-      }
+      if (!keyword.match(koRegex)) lang = 'en';
+      if (lang === 'ko') keyword = keyword.replace(excludeKoRegex, '');
       query = this.subscribeModel.find({ [lang]: new RegExp(keyword) });
     }
     if (searchDto.after) {

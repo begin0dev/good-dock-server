@@ -56,6 +56,30 @@ export const run0325 = [
         imageUrl:
           'https://play-lh.googleusercontent.com/_kOpK91Js2bz6aGKx48D0D3TdWZGDgBV8A7iP5_IkOPkoz8tkeaCnQ7WruQ3zVZl5rA=w480-h960-rw',
       },
+      {
+        ko: '애플 뮤직',
+        en: 'apple music',
+        imageUrl:
+          'https://play-lh.googleusercontent.com/mOkjjo5Rzcpk7BsHrsLWnqVadUK1FlLd2-UlQvYkLL4E9A0LpyODNIQinXPfUMjUrbE=w480-h960-rw',
+      },
+      {
+        ko: '지니 뮤직',
+        en: 'genie music',
+        imageUrl:
+          'https://play-lh.googleusercontent.com/gSjYDowrYi_BIdXKIsxhc4Y3Zj5zGA3os_SCm8cqWWCrXQYejcmser-UOEM-PnCGRgk=w480-h960-rw',
+      },
+      {
+        ko: '바이브',
+        en: 'vibe',
+        imageUrl:
+          'https://play-lh.googleusercontent.com/yHyThRQ7idHmfkEaz0abkkCYZAMbNulSU-hZL0TP-KgXTP9Y1ph1w8-n-l0kaBnrfI8=w480-h960-rw',
+      },
+      {
+        ko: '벅스',
+        en: 'bugs',
+        imageUrl:
+          'https://play-lh.googleusercontent.com/1EYBuARUQsNbhEQ1Ax4q9G-E_KuMuzxklmBdMXlIksKtYlebieUxvVLrrtQv6oBWR4k=w480-h960-rw',
+      },
     ],
   },
 ];

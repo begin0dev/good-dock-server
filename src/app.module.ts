@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { TokensMiddleware } from './tokens/tokens.middleware';
 import { TokensModule } from './tokens/tokens.module';
 import { SubscribesModule } from './subscribes/subscribes.module';
+import { UserToSubscribesModule } from './user-to-subscribes/user-to-subscribes.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { SubscribesModule } from './subscribes/subscribes.module';
     AuthModule,
     TokensModule,
     SubscribesModule,
+    UserToSubscribesModule,
   ],
 })
 export class AppModule {

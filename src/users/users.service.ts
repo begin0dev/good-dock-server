@@ -16,6 +16,10 @@ export class UsersService {
     @InjectModel(User.name) private userModel: Model<UserDocument>,
   ) {}
 
+  find(_id: string) {
+    return this.userModel.findOne({ _id });
+  }
+
   findByProvider(provider: TOAuthProvider, providerId: string) {
     return this.userModel.findOne({ provider, providerId });
   }

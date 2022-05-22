@@ -7,22 +7,22 @@ import mongooseDelete = require('mongoose-delete');
 
 @Schema({ timestamps: true })
 export class User {
+  @Prop({ required: true })
   @IsString()
   @Length(1, 25)
-  @Prop({ required: true })
   displayName: string;
 
-  @IsString()
   @Prop({ required: true })
+  @IsString()
   provider: string;
 
-  @IsString()
   @Prop({ required: true })
+  @IsString()
   providerId: string;
 
+  @Prop({ sparse: true, unique: true, index: true })
   @IsString()
   @Optional()
-  @Prop({ sparse: true, unique: true, index: true })
   refreshToken?: string;
 }
 

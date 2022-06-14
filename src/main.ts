@@ -1,3 +1,4 @@
+import * as morgan from 'morgan';
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { NestExpressApplication } from '@nestjs/platform-express';
@@ -11,6 +12,7 @@ async function bootstrap() {
 
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
+  app.use(morgan('dev'));
   app.setGlobalPrefix('/dev');
   app.useGlobalPipes(
     new ValidationPipe({

@@ -17,8 +17,9 @@ export class UserToSubscribesController {
   ) {}
 
   @Get('/')
-  findByMonth(@CurrentUser() user: ICurrentUser, @Query() findByMonthDto: FindByMonthDto) {
-    return this.userToSubscribesService.findByMonth(user._id, findByMonthDto);
+  async findByMonth(@CurrentUser() user: ICurrentUser, @Query() findByMonthDto: FindByMonthDto) {
+    const payload = await this.userToSubscribesService.findByMonth(user._id, findByMonthDto);
+    return { payload };
   }
 
   @Post('/')
@@ -27,6 +28,7 @@ export class UserToSubscribesController {
     @Body() createUserToSubscribeDto: CreateUserToSubscribeDto,
   ) {
     const currentUser = await this.usersService.find(user._id);
-    return this.userToSubscribesService.create(currentUser, createUserToSubscribeDto);
+    await this.userToSubscribesService.create(currentUser, createUserToSubscribeDto);
+    return { payload: null };
   }
 }

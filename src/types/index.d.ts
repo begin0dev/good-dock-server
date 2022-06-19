@@ -1,4 +1,4 @@
-import { ICurrentUser } from '~app/decorators/user.decorator';
+import { ICurrentUser } from '../serializers/user.serializer';
 
 declare global {
   namespace Express {
